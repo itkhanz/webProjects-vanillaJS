@@ -43,6 +43,8 @@ Create variables to store references to DOM elements.
 
 - Created a dummy transaction data to show list of transactions.
 - Add tranactions to the DOM list:
+    <details>
+    <summary>Click to expand</summary>
 
   ```javascript
   // Add transactions to DOM list
@@ -65,4 +67,42 @@ Create variables to store references to DOM elements.
   }
   ```
 
-- Pass the transactions to addTransactionDOM, and initize the app.
+    </details>
+
+- Loop through the transactions to pass the transactions to addTransactionDOM, and initize the app.
+
+---
+
+### Display Balance, Income and Expense
+
+- Calcuulate the balance, income, and expense using higher order array methods.
+- Add the amount to the DOM.
+    <details>
+    <summary>Click to expand</summary>
+
+  ```javascript
+  // Update the balance income and expense
+  function updateValues() {
+    const amounts = transactions.map((transaction) => transaction.amount);
+
+    const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
+
+    const income = amounts
+      .filter((item) => item > 0)
+      .reduce((acc, item) => (acc += item), 0)
+      .toFixed(2);
+
+    const expense =
+      amounts
+        .filter((item) => item < 0)
+        .reduce((acc, item) => (acc += item), 0) * -(1).toFixed(2);
+
+    balance.innerHTML = `$${total}`;
+    money_plus.innerHTML = `$${income}`;
+    money_minus.innerHTML = `$${expense}`;
+
+    //   console.log(expense);
+  }
+  ```
+
+    </details>
