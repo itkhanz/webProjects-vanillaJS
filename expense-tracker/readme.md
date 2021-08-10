@@ -106,3 +106,50 @@ Create variables to store references to DOM elements.
   ```
 
     </details>
+
+---
+
+### Add AND Delete transactions
+
+- Add an event listener to form, and write a function to handle the submission of input data as transaction.
+- Add an extra check to see if the user input is empty.
+- Create a transaction object, and pass it to the transactions array, and `addTransactionDOM`.
+- Call the `updateValues()` to update the total balance, income and expense.
+- Clear the User Inputs.
+    <details>
+        <summary>Click to expand</summary>
+
+  ```javascript
+  // Add trasnsaction
+  function addTransaction(e) {
+    e.preventDefault();
+
+    if (text.value.trim() === "" || amount.value.trim() === "") {
+      alert("Please add a text and amount");
+    } else {
+      const transaction = {
+        id: generateID(),
+        text: text.value,
+        amount: parseInt(amount.value),
+      };
+
+      transactions.push(transaction);
+      addTransactionDOM(transaction);
+      updateValues();
+
+      text.value = "";
+      amount.value = "";
+
+      console.log(transactions);
+    }
+  }
+
+  // Generate Random ID
+  function generateID() {
+    return Math.floor(Math.random() * 10000000);
+  }
+  ```
+
+    </details>
+
+- Add an inline `onclick` event to the `button` element and pass the transaction ID to `removeTransaction` function. Filter out the tranaction based on transactionID.
