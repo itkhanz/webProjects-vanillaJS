@@ -34,3 +34,35 @@ Keep track of income and expenses. Add and remove items and save to local storag
 - Position a parent element as `relative` if you want to `absolute` position a child element.
 
 ---
+
+## Project Javascript
+
+Create variables to store references to DOM elements.
+
+### Show Transaction Items
+
+- Created a dummy transaction data to show list of transactions.
+- Add tranactions to the DOM list:
+
+  ```javascript
+  // Add transactions to DOM list
+  function addTransactionDOM(transaction) {
+    // Get sign
+    const sign = transaction.amount < 0 ? "-" : "+";
+
+    const item = document.createElement("li");
+
+    // Add class based on value
+    item.classList.add(transaction.amount < 0 ? "minus" : "plus");
+
+    item.innerHTML = `
+      ${transaction.text} <span>${sign}${Math.abs(
+      transaction.amount
+    )}</span> <button class="delete-btn">x</button>
+      `;
+
+    list.appendChild(item);
+  }
+  ```
+
+- Pass the transactions to addTransactionDOM, and initize the app.
