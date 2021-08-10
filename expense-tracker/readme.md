@@ -109,7 +109,7 @@ Create variables to store references to DOM elements.
 
 ---
 
-### Add AND Delete transactions
+### Add & Delete transactions
 
 - Add an event listener to form, and write a function to handle the submission of input data as transaction.
 - Add an extra check to see if the user input is empty.
@@ -153,3 +153,30 @@ Create variables to store references to DOM elements.
     </details>
 
 - Add an inline `onclick` event to the `button` element and pass the transaction ID to `removeTransaction` function. Filter out the tranaction based on transactionID.
+
+---
+
+### Presist to Local Storage
+
+- Implement the localStorage and use the data from it instead of dummy transactions.
+
+```javascript
+const localStorageTransactions = JSON.parse(
+  localStorage.getItem("transactions")
+);
+
+let transactions =
+  localStorage.getItem("transactions") !== null ? localStorageTransactions : [];
+```
+
+- Upate the localStorage:
+
+```javascript
+function updateLocalStorage() {
+  localStorage.setItem("transactions", JSON.stringify(transactions));
+}
+```
+
+- Call the `updateLocalStorage()` function when add or delete the transaction.
+
+---
