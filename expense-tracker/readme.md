@@ -180,3 +180,52 @@ function updateLocalStorage() {
 - Call the `updateLocalStorage()` function when add or delete the transaction.
 
 ---
+
+### Edit transactions
+
+- Add a seprate button element to the `<li>` transaction tags, and use fontawesome icon.
+- Style the button to show on the left side, and move the delete button to the right.
+- Refactor the code to not use inline HTML event attributes like `onClick`, makes difficult to pass strings and objects.
+
+  ```javascript
+  const editBtnElement = document.createElement("button");
+  editBtnElement.classList.add("edit-btn");
+  editBtnElement.addEventListener("click", function () {
+    editTransaction(transaction);
+  });
+  editBtnElement.innerHTML = `<i class="fas fa-edit"></i>`;
+  item.appendChild(editBtnElement);
+  ```
+
+- Pass the transaction to `editTransaction` function, and remove the to be edited transactions from the list and DOM.
+- Insert the amount and text values inside the form fields, and modify the form headings.
+- Submit the form to save the edited transaction changes.
+    <details>
+        <summary>Click to expand</summary>
+
+  ```javascript
+  // Edit transaction by ID
+  function editTransaction(transaction) {
+    //   First remove the transaction to be edited
+    const transactionID = transaction.id;
+    transactions = transactions.filter(
+      (transaction) => transaction.id !== transactionID
+    );
+    //   removeTransactionDOM(transactionID);
+    updateLocalStorage();
+    init();
+
+    form_heading.innerHTML = "Edit the transaction below: ";
+    submit_btn.innerHTML = "Submit the edited transaction";
+
+    //update the form fields
+    text.value = transaction.text;
+    amount.value = transaction.amount;
+  }
+  ```
+
+    </details>
+
+- Reset the form headings after submitting the edit changes inside `addTransaction`
+
+---

@@ -157,10 +157,24 @@ that is currently targeted by the keyboard, or activated by the mouse.  */
   padding: 2px 5px;
   position: absolute;
   top: 50%;
-  left: 0;
-  transform: translate(-100%, -50%);
+  right: -5px;
+  transform: translate(100%, -50%);
   opacity: 0;
   transition: opacity 0.3s ease;
+}
+
+.edit-btn {
+  cursor: pointer;
+  background-color: #2ecc71;
+  color: #fff;
+  border: 0;
+  font-size: 15px;
+  line-height: 15px;
+  padding: 2px 5px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -50%);
 }
 
 .list li:hover .delete-btn {
