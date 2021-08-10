@@ -11,3 +11,6 @@ Keep track of income and expenses. Add and remove items and save to local storag
 - Delete items from DOM
 - Persist to local storage
 
+## Project HTML
+
+- As a naming convention, add a Class and ID attribute to the HTML tag with same name. Use the Class for CSS styling and ID for Javascript.
